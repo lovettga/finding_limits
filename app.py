@@ -14,9 +14,7 @@ main_container.latex(lim_disp, width="content")
 
 input_container = st.container(border=True, horizontal=True, horizontal_alignment="distribute")
 input_container.markdown("Your answer: ")
-number = input_container.number_input(
-    value=None, placeholder="Ex: 3.4", width=220
-)
+number = input_container.number_input(placeholder="Ex: 3.4", width=220)
 
 st.write("Provided answer: ", number)
 
