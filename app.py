@@ -1,20 +1,47 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#import sympy as sp
 from sympy import simplify, symbols, limit, sqrt
 
-# randomize c and b
+########################################
+# AI Generated code to generate a limit problem
+"""
+def generate_limit_problem(a_value):
 
+    #Generates coefficients c and d for f(x) = sqrt((x+1)/(x^2+cx+d))
+    #such that the limit as x approaches -1 evaluates exactly to 1/a.
+    
+    if a_value <= 0:
+        raise ValueError("The value of 'a' must be greater than 0 for a valid real square root output.")
+        
+    x = sp.Symbol('x')
+    
+    # Calculate symbolic coefficients based on derived equations
+    c = a_value**2 + 2
+    d = a_value**2 + 1
+    
+    # Construct the mathematical function
+    numerator = x + 1
+    denominator = x**2 + c*x + d
+    f_x = sp.sqrt(numerator / denominator)
+    
+    # Evaluate the target limit using SymPy's limit logic
+    computed_limit = sp.limit(f_x, x, -1)
+"""
+#######################################
+
+# randomize c and b based on a
+a = np.random.randint(low=1, high=50)
+
+c = a_value**2 + 2
+d = a_value**2 + 1
 
 # such that: (x+1) / (x^2+cx+b) = 0 at x=-1
 # limit must simplify to 1/a
 
-
-
-
+# this works to solve the limit
 x = symbols('x')
-expr = sqrt(  (x+1) / ( (x)**2 + 11*x + 10 ) )
+expr = sqrt(  (x+1) / ( (x)**2 + c*x + b ) )
 result = limit(expr, x, -1)
 
 
@@ -34,7 +61,7 @@ left, right = main_container.columns(2, border=True, vertical_alignment="bottom"
 left.markdown("Your answer: ", text_alignment="right")
 number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
 
-
+# TESTING: displays correct answer for the limit
 st.write(f"The limit is: {result}")
 
 st.write("Provided answer: ", number)
