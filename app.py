@@ -34,7 +34,7 @@ from sympy import simplify, symbols, limit, sqrt
 a = np.random.randint(low=1, high=50)
 
 c = a**2 + 2
-d = a**2 + 1
+b = a**2 + 1
 
 # such that: (x+1) / (x^2+cx+b) = 0 at x=-1
 # limit must simplify to 1/a
