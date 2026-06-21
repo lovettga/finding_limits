@@ -59,6 +59,11 @@ main_container.latex(lim_disp, width="content")
 #create 2 columns (centered on the screen) for "your answer:" and input box
 left, right = main_container.columns(2, border=True, vertical_alignment="bottom")
 left.markdown("Your answer: ", text_alignment="right")
+
+# TODO: update to str_input in order to accept fractions as values
+#from sympy import nsimplify
+#approx_dec = 0.333333333333
+#clean_frac = nsimplify(approx_dec) # Returns: 1/3
 number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
 
 # TESTING: displays correct answer for the limit
