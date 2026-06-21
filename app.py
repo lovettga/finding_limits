@@ -2,14 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.title('Finding Limits')
+st.header('Finding Limits')
 
 
 container = st.container(border=True, horizontal_alignment="center")
-container.write("Solve the limit:")
-container.write("Enter Latex here to display limit")
+container.markdown("Solve the limit:", text_alignment="center")
+container.write("x**2 + 3*x - 1/2")
 number = container.number_input(
-    "Your answer", value=None, placeholder="Type a number..."
+    "Your answer", value=None, placeholder="Ex: 300", width="200"
 )
 st.write("This is outside the container")
 
