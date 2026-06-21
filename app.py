@@ -49,7 +49,7 @@ result = limit(expr, x, -1)
 st.header('Finding Limits')
 
 # create string to display limit using randomized variables
-lim_disp = r'\lim_{x \to {-1}} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} + 5y - 8n}' % ("1", "2")
+lim_disp = r'\lim_{x \to {-1}} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (c, b)
 
 # create main container for the question prompt and answer box
 main_container = st.container(border=True, horizontal_alignment="center")
