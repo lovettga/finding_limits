@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import sympy as sp
-#from sympy import simplify, symbols, limit, sqrt
+#import sympy as sp
+from sympy import simplify, symbols, limit, sqrt
 
 # randomize c and b
 
@@ -13,9 +13,9 @@ import sympy as sp
 
 
 
-x = sp.symbols('x')
-expr = sp.sqrt(  (x+1) / ( (x)**2 + 11*x + 10 ) )
-result = sp.limit(expr, x, -1)
+x = symbols('x')
+expr = sqrt(  (x+1) / ( (x)**2 + 11*x + 10 ) )
+result = limit(expr, x, -1)
 
 
 # page header
