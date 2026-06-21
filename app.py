@@ -5,29 +5,29 @@ from sympy import simplify, symbols, limit, sqrt
 
 ########################################
 # AI Generated code to generate a limit problem
-"""
-def generate_limit_problem(a_value):
+
+#def generate_limit_problem(a_value):
 
     #Generates coefficients c and d for f(x) = sqrt((x+1)/(x^2+cx+d))
     #such that the limit as x approaches -1 evaluates exactly to 1/a.
     
-    if a_value <= 0:
-        raise ValueError("The value of 'a' must be greater than 0 for a valid real square root output.")
+#    if a_value <= 0:
+#        raise ValueError("The value of 'a' must be greater than 0 for a valid real square root output.")
         
-    x = sp.Symbol('x')
+#    x = sp.Symbol('x')
     
     # Calculate symbolic coefficients based on derived equations
-    c = a_value**2 + 2
-    d = a_value**2 + 1
+#    c = a_value**2 + 2
+#    d = a_value**2 + 1
     
     # Construct the mathematical function
-    numerator = x + 1
-    denominator = x**2 + c*x + d
-    f_x = sp.sqrt(numerator / denominator)
+#    numerator = x + 1
+#    denominator = x**2 + c*x + d
+#    f_x = sp.sqrt(numerator / denominator)
     
     # Evaluate the target limit using SymPy's limit logic
-    computed_limit = sp.limit(f_x, x, -1)
-"""
+#    computed_limit = sp.limit(f_x, x, -1)
+
 #######################################
 
 # randomize c and b based on a
