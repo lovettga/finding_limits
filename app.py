@@ -4,13 +4,19 @@ import numpy as np
 
 st.header('Finding Limits')
 
-raw_latex = r'\lim_{x \to %s} \sqrt{ \dfrac{x+%s}{x^{2}+%sx+%s} }' % ("1", "2", "3", "4")
+# create string to display limit using randomized variables
+lim_disp = r'\lim_{x \to %s} \sqrt{ \dfrac{x+%s}{x^{2}+%sx+%s} }' % ("1", "2", "3", "4")
 
-container = st.container(border=True, horizontal_alignment="center")
-container.markdown("Solve the limit:", text_alignment="center")
-container.latex(raw_latex, width="content")
-number = container.number_input(
-    "Your answer", value=None, placeholder="Ex: 300", width=200
+main_container = st.container(border=True, horizontal_alignment="center")
+main_container.markdown("Solve the limit:", text_alignment="center")
+main_container.latex(lim_disp, width="content")
+
+
+input_container = st.container(border=True, horizontal=True, horizontal_alignment="distribute")
+input_container.markdown("Your answer: ")
+number = input_container.number_input(
+    value=None, placeholder="Ex: 3.4", width=220
 )
-st.write("This is outside the container")
+
+st.write("Provided answer: ", number)
 
