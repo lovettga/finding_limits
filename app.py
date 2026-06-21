@@ -7,12 +7,12 @@ st.header('Finding Limits')
 # create string to display limit using randomized variables
 lim_disp = r'\lim_{x \to %s} \sqrt{ \dfrac{x+%s}{x^{2}+%sx+%s} }' % ("1", "2", "3", "4")
 
-main_container = st.container(border=True, horizontal_alignment="center")
+main_container = st.container(border=True, horizontal_alignment="center", vertical_alignment="center")
 main_container.markdown("Solve the limit:", text_alignment="center")
 main_container.latex(lim_disp, width="content")
 
 #create 2 columns (centered on the screen) for "your answer:" and input box
-left, right = main_container.columns(2, vertical_alignment="center")
+left, right = main_container.columns(2)
 
 left.markdown("Your answer: ", text_alignment="right")
 number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
