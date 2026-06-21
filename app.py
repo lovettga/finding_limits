@@ -12,10 +12,10 @@ main_container.markdown("Solve the limit:", text_alignment="center")
 main_container.latex(lim_disp, width="content")
 
 #create 2 columns (centered on the screen) for "your answer:" and input box
-left, right = main_container.columns(2, vertical_alignment="bottom")
+left, right = main_container.columns(2, vertical_alignment="center")
 
 left.markdown("Your answer: ", text_alignment="right")
-number = right.number_input(label="", value=0.0, placeholder="Ex: 3.4", width=220)
+number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
 
 #input_container.markdown("Your answer: ")
 #number = input_container.number_input(label="", value=0.0, placeholder="Ex: 3.4", width=220)
