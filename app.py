@@ -7,7 +7,7 @@ st.header('Finding Limits')
 
 container = st.container(border=True, horizontal_alignment="center")
 container.markdown("Solve the limit:", text_alignment="center")
-container.write("x**2 + 3*x - 1/2")
+container.latex("x**2 + 3*x - 1/2", width="content")
 number = container.number_input(
     "Your answer", value=None, placeholder="Ex: 300", width=200
 )
