@@ -31,7 +31,7 @@ from sympy import simplify, symbols, limit, sqrt
 #######################################
 
 # randomize c and b based on a
-a = np.random.randint(low=1, high=50)
+a = np.random.randint(low=1, high=20)
 
 c = a**2 + 2
 b = a**2 + 1
