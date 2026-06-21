@@ -33,8 +33,8 @@ from sympy import simplify, symbols, limit, sqrt
 # randomize c and b based on a
 a = np.random.randint(low=1, high=50)
 
-c = a_value**2 + 2
-d = a_value**2 + 1
+c = a**2 + 2
+d = a**2 + 1
 
 # such that: (x+1) / (x^2+cx+b) = 0 at x=-1
 # limit must simplify to 1/a
