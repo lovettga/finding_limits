@@ -22,14 +22,6 @@ def generate_limit():
     result = limit(expr, x, -1)
 
     return a, b, c, result
-
-# store values in session state
-if st.session_state.result == None:
-    limit_info = generate_limit()
-    st.session_state.a = limit_info[0]
-    st.session_state.b = limit_info[1]
-    st.session_state.c = limit_info[2]
-    st.session_state.result = limit_info[3]
 #############################################
 # Handle the callback for the answer box
 def handle_text_change():
@@ -51,6 +43,15 @@ if "answer" not in st.session_state:
     st.session_state.answer = None
 #############################################
 # Create display for question prompt
+
+# initialize values and store values in session state
+if 'result' not in st.session_state:
+    limit_info = generate_limit()
+    st.session_state.a = limit_info[0]
+    st.session_state.b = limit_info[1]
+    st.session_state.c = limit_info[2]
+    st.session_state.result = limit_info[3]
+
 # page header
 st.header('Finding Limits')
 
