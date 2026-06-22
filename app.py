@@ -94,10 +94,10 @@ st.write(f"The limit is: {st.session_state.result}")
 if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
-    st.write(f"Your Answer: {st.session_state.curr_answer}")
+    st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
     st.markdown(f":green[:material/check: Correct]. The limit is {st.session_state.result}.")
 else:
-    st.write(f"Your Answer: {st.session_state.curr_answer}")
+    st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
     st.markdown(f":red[:material/close: Incorrect]. The limit is {st.session_state.result}.")
 ###############################################
 
