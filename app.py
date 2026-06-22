@@ -79,11 +79,11 @@ st.write("Provided answer: ", number)
 
 #st.write(f"**Your answer (updated on change):** {st.session_state.answer}")
 if st.session_state.answer is None:
-    # display nothing
+    st.write("Provided answer: ")
 elif st.session_state.answer:
     st.write("Provided answer: is correct ")
 else:
-    st.write("Provided answer: is correct ")
+    st.write("Provided answer: is incorrect ")
 ###############################################
 
 ###########################
