@@ -72,21 +72,20 @@ left.markdown("### Your answer: ", text_alignment="right")
 #approx_dec = 0.333333333333
 #clean_frac = nsimplify(approx_dec) # Returns: 1/3
 # number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
-number = right.text_area(
+number = right.text_input(
     label="", value=None, placeholder="Ex: 3.4", width=300, height="content", 
     max_chars=10, key="answer_area", on_change=handle_text_change)
 
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
 
-
-#st.write(f"**Your answer (updated on change):** {st.session_state.answer}")
+# display answer correctness
 if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
-    st.markdown(":green[{st.session_state.answer} is correct ]")
+    st.markdown("{st.session_state.answer} is :green[correct ].")
 else:
-    st.markdown(":red[{st.session_state.answer} is incorrect ]")
+    st.markdown("{st.session_state.answer} is :red[incorrect ].")
 ###############################################
 
 ###########################
