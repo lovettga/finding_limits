@@ -64,14 +64,8 @@ main_container.markdown("## Solve the limit:", text_alignment="center")
 main_container.latex(lim_disp, width="content")
 
 #create 2 columns (centered on the screen) for "your answer:" and input box
-left, right = main_container.columns(2, border=True, vertical_alignment="bottom")
+left, right = main_container.columns(2, vertical_alignment="bottom")
 left.markdown("### Your answer: ", text_alignment="right")
-
-# TODO: update to str_input in order to accept fractions as values
-#from sympy import nsimplify
-#approx_dec = 0.333333333333
-#clean_frac = nsimplify(approx_dec) # Returns: 1/3
-# number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
 number = right.text_input(
     label="", value=None, placeholder="Ex: 3.4", width=300, 
     max_chars=10, key="answer_area", on_change=handle_text_change)
@@ -83,9 +77,9 @@ st.write(f"The limit is: {st.session_state.result}")
 if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
-    st.markdown("{st.session_state.answer} is :green[correct ].")
+    st.markdown("{{st.session_state.answer}} is :green[correct ].")
 else:
-    st.markdown("{st.session_state.answer} is :red[incorrect ].")
+    st.markdown("{{st.session_state.answer}} is :red[incorrect ].")
 ###############################################
 
 ###########################
