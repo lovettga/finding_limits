@@ -73,7 +73,7 @@ left.markdown("### Your answer: ", text_alignment="right")
 #clean_frac = nsimplify(approx_dec) # Returns: 1/3
 # number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
 number = right.text_input(
-    label="", value=None, placeholder="Ex: 3.4", width=300, height="content", 
+    label="", value=None, placeholder="Ex: 3.4", width=300, 
     max_chars=10, key="answer_area", on_change=handle_text_change)
 
 # TESTING: displays correct answer for the limit
