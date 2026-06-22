@@ -84,9 +84,9 @@ st.write(f"The limit is: {st.session_state.result}")
 if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
-    st.markdown("{st.session_state.answer} is correct ", color="green")
+    st.markdown(":green[{st.session_state.answer} is correct ]")
 else:
-    st.markdown("{st.session_state.answer} is incorrect ", color="red")
+    st.markdown(":red[{st.session_state.answer} is incorrect ]")
 ###############################################
 
 ###########################
