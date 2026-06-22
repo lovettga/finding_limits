@@ -66,7 +66,7 @@ main_container.latex(lim_disp, width="content")
 left, right = main_container.columns(2, vertical_alignment="bottom")
 left.markdown("### Your answer: ", text_alignment="right")
 
-answer_box, submit_btn = st.right.columns([8,2]) 
+answer_box, submit_btn = right.columns([8,2]) 
 # Use the first column for text input
 with answer_box:
     number = right.text_input(
