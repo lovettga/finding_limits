@@ -31,8 +31,10 @@ def handle_text_change():
     # DO SOMETHING WITH THE ANSWER, LIKE DETERMINE IF IT IS CORRECT OR NOT :)
     # convert provided answer into a fraction and them compare against correct answer
     # prevent error edge case if submit is pressed with no answer input
-    if current_answer is not None:
+    if current_text is not None:
         current_answer = nsimplify(current_text)
+    else:
+        break
     answer = False
     if current_answer == st.session_state.result:
         answer = True
