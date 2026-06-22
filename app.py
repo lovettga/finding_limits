@@ -71,7 +71,7 @@ left, right = main_container.columns(2, vertical_alignment="bottom")
 left.markdown("### Your answer: ", text_alignment="right")
 
 # create 2 columns within the right column above to contain the input field and the submit button
-answer_box, submit_btn = right.columns([8,2]) 
+answer_box, submit_btn = right.columns([8,4]) 
 number = answer_box.text_input(
     label="", label_visibility='collapsed',
     value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
