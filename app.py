@@ -21,10 +21,11 @@ expr = sqrt(  (x+1) / ( (x)**2 + c*x + b ) )
 result = limit(expr, x, -1)
 
 # store values in session state
-st.session_state.a = a
-st.session_state.c = c
-st.session_state.b = b
-st.session_state.result = a
+if st.session_state.result = None
+    st.session_state.a = a
+    st.session_state.c = c
+    st.session_state.b = b
+    st.session_state.result = a
 #############################################
 # Handle the callback for the answer box
 def handle_text_change():
@@ -71,7 +72,7 @@ number = right.text_area(
     max_chars=10, key="answer_area", on_change=handle_text_change)
 
 # TESTING: displays correct answer for the limit
-st.write(f"The limit is: {result}")
+st.write(f"The limit is: {st.session_state.result}")
 
 # TODO: the page resets when you click outside of the box to "submit" the answer
 # figure out how to display the correct/incorrect?
