@@ -80,13 +80,6 @@ number = answer_box.text_input(
 if submit_btn.button("Submit"):
     handle_text_change()
 
-#number = right.text_input(
-#    label="", label_visibility='collapsed',
-#    value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
-#    key="answer_area", on_change=handle_text_change)
-#if right.button("Submit"):
-#    handle_text_change()
-
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
 
@@ -95,14 +88,36 @@ if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
     st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
-    st.markdown(f":green[:material/check: Correct]. The limit is {st.session_state.result}.")
+    st.markdown(f":green[:material/check: Correct]. The limit is ${st.session_state.result}$.")
 else:
     st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
-    st.markdown(f":red[:material/close: Incorrect]. The limit is {st.session_state.result}.")
+    st.markdown(f":red[:material/close: Incorrect]. The limit is ${st.session_state.result}$.")
 ###############################################
 
 ###########################
-# TESTING AI Code
+# solving for the solution of the limit
+exp_container = st.container(border=True, horizontal_alignment="left")
+exp_container.markdown("### Solution: ")
+# Given:
+exp_container.markdown(f"Given: ${lim_disp}$")
 
-#############################
+# simplify the function of the limit
+st.markdown(f"Simplify the function of the limit.")
+fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
+sim_fx_disp = r'\sqrt{ \dfrac{1}{x+%s} }' % (st.session_state.b)
+st.markdown(f"{fx_disp} -> {sim_fx_disp}")
+
+# Evaluate:
+st.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
+sim_fx_disp = r'\sqrt{ \dfrac{1}{-1+%s} }' % (st.session_state.b)
+st.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
+###########################
+
+
+
+
+
+
+
+
 
