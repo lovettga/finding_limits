@@ -79,44 +79,18 @@ number = right.text_area(
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
 
-# TODO: the page resets when you click outside of the box to "submit" the answer
-# figure out how to display the correct/incorrect?
-st.write("Provided answer: ", number)
 
 #st.write(f"**Your answer (updated on change):** {st.session_state.answer}")
 if st.session_state.answer is None:
-    st.write("Provided answer: ")
+    st.markdown("")
 elif st.session_state.answer:
-    st.write("Provided answer: is correct ")
+    st.markdown("{st.session_state.answer} is correct ", color="green")
 else:
-    st.write("Provided answer: is incorrect ")
+    st.markdown("{st.session_state.answer} is incorrect ", color="red")
 ###############################################
 
 ###########################
 # TESTING AI Code
-import streamlit as st
-
-# 1. Initialize the value in session state so it doesn't get re-initialized on every click
-if 'my_value' not in st.session_state:
-    st.session_state.my_value = "Default Value"
-
-# 2. Define a callback function to update the session state
-def update_value():
-    st.session_state.my_value = st.session_state.widget_key
-
-# 3. Widget with matching key and callback
-st.text_input(
-    "Enter text:", 
-    value=st.session_state.my_value, 
-    key="widget_key", 
-    on_change=update_value
-)
-
-st.write(f"Persisted value: {st.session_state.my_value}")
-
-
-
-
 
 #############################
 
