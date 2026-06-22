@@ -34,7 +34,7 @@ def handle_text_change():
     if current_text is not None:
         current_answer = nsimplify(current_text)
     else:
-        break
+        return
     answer = False
     if current_answer == st.session_state.result:
         answer = True
