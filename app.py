@@ -66,21 +66,19 @@ main_container = st.container(border=True, horizontal_alignment="center")
 main_container.markdown("## Solve the limit:", text_alignment="center")
 main_container.latex(lim_disp, width="content")
 
-#create 2 columns (centered on the screen) for "your answer:" and input box
+# create 2 columns (centered on the screen) for "your answer:" and input box
 left, right = main_container.columns(2, vertical_alignment="bottom")
 left.markdown("### Your answer: ", text_alignment="right")
 
+# create 2 columns within the right column above to contain the input field and the submit button
 answer_box, submit_btn = right.columns([8,2]) 
-# Use the first column for text input
-with answer_box:
-    number = right.text_input(
-        label="", label_visibility='collapsed',
-        value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
-        key="answer_area", on_change=handle_text_change)
-# Use the second column for the submit button
-with submit_btn:
-    if right.button("Submit"):
-        handle_text_change()
+number = answer_box.text_input(
+    label="", label_visibility='collapsed',
+    value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
+    key="answer_area", on_change=handle_text_change)
+
+if submit_btn.button("Submit"):
+    handle_text_change()
 
 #number = right.text_input(
 #    label="", label_visibility='collapsed',
