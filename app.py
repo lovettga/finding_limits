@@ -99,18 +99,18 @@ else:
 exp_container = st.container(border=True, horizontal_alignment="left")
 exp_container.markdown("### Solution: ")
 # Given:
-exp_container.markdown(f"Given: ${lim_disp}$")
-
+exp_container.markdown(f"Given: ")
+exp_container.latex(lim_disp, width="content")
 # simplify the function of the limit
-st.markdown(f"Simplify the function of the limit.")
+exp_container.markdown(f"Simplify the function of the limit.")
 fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
 sim_fx_disp = r'\sqrt{ \dfrac{1}{x+%s} }' % (st.session_state.b)
-st.markdown(f"{fx_disp} -> {sim_fx_disp}")
+exp_container.markdown(f"${fx_disp}$ -> ${sim_fx_disp}$")
 
 # Evaluate:
-st.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
+exp_container.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
 sim_fx_disp = r'\sqrt{ \dfrac{1}{-1+%s} }' % (st.session_state.b)
-st.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
+exp_container.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
 ###########################
 
 
