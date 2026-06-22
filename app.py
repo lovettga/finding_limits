@@ -24,7 +24,7 @@ def generate_limit():
     return a, b, c, result
 
 # store values in session state
-if st.session_state.result = None:
+if st.session_state.result == None:
     limit_info = generate_limit()
     st.session_state.a = limit_info[0]
     st.session_state.b = limit_info[1]
