@@ -65,11 +65,25 @@ main_container.latex(lim_disp, width="content")
 #create 2 columns (centered on the screen) for "your answer:" and input box
 left, right = main_container.columns(2, vertical_alignment="bottom")
 left.markdown("### Your answer: ", text_alignment="right")
-number = right.text_input(
-    label="", value=None, placeholder="Ex: 3.4", width=220, 
-    max_chars=15, key="answer_area", on_change=handle_text_change)
-if right.button("Submit"):
-    handle_text_change()
+
+answer_box, submit_btn = st.right.columns([8,2]) 
+# Use the first column for text input
+with answer_box:
+    number = right.text_input(
+        label="", label_visibility='collapsed',
+        value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
+        key="answer_area", on_change=handle_text_change)
+# Use the second column for the submit button
+with submit_btn:
+    if right.button("Submit"):
+        handle_text_change()
+
+#number = right.text_input(
+#    label="", label_visibility='collapsed',
+#    value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
+#    key="answer_area", on_change=handle_text_change)
+#if right.button("Submit"):
+#    handle_text_change()
 
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
