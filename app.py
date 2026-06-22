@@ -4,7 +4,7 @@ import numpy as np
 from sympy import nsimplify, symbols, limit, sqrt
 
 #############################################
-# Generate the limit problem and solution
+# Generate the limit problem and calculate solution
 # randomize c and b based on a
 a = np.random.randint(low=1, high=20)
 
@@ -19,8 +19,33 @@ b = a**2 + 1
 x = symbols('x')
 expr = sqrt(  (x+1) / ( (x)**2 + c*x + b ) )
 result = limit(expr, x, -1)
-#############################################
 
+# store values in session state
+st.session_state.a = a
+st.session_state.c = c
+st.session_state.b = b
+st.session_state.result = a
+#############################################
+# Handle the callback for the answer box
+def handle_text_change():
+    # Access the text using the widget's unique key
+    current_text = st.session_state.answer_area
+    
+    # DO SOMETHING WITH THE ANSWER, LIKE DETERMINE IF IT IS CORRECT OR NOT :)
+    # convert provided answer into a fraction and them compare against correct answer
+    current_answer = nsimplify(current_text)
+    answer = False
+    if current_answer == st.session_state.result:
+        answer = True
+    
+    # Store results back in session state to display in the UI
+    st.session_state.answer = answer
+
+# initialize session state variables if they do not exist
+if "answer" not in st.session_state:
+    st.session_state.answer = None
+#############################################
+# Create display for question prompt
 # page header
 st.header('Finding Limits')
 
@@ -41,47 +66,48 @@ left.markdown("### Your answer: ", text_alignment="right")
 #approx_dec = 0.333333333333
 #clean_frac = nsimplify(approx_dec) # Returns: 1/3
 # number = right.number_input(label="", value=None, placeholder="Ex: 3.4", width=220)
-number = right.text_area(label="", value=None, placeholder="Ex: 3.4", width=220, max_chars=10)
+number = right.text_area(
+    label="", value=None, placeholder="Ex: 3.4", width=300, height="content", 
+    max_chars=10, key="answer_area", on_change=handle_text_change)
 
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {result}")
 
+# TODO: the page resets when you click outside of the box to "submit" the answer
+# figure out how to display the correct/incorrect?
 st.write("Provided answer: ", number)
 
-
+#st.write(f"**Your answer (updated on change):** {st.session_state.answer}")
+if st.session_state.answer is None:
+    # display nothing
+elif st.session_state.answer:
+    st.write("Provided answer: is correct ")
+else:
+    st.write("Provided answer: is correct ")
+###############################################
 
 ###########################
-# TESTING on_change funcitonality of string input
+# TESTING AI Code
 import streamlit as st
 
-# 1. Define the callback function
-def handle_text_change():
-    # Access the text using the widget's unique key
-    current_text = st.session_state.my_text_area
-    
-    # Calculate word count
-    word_count = len(current_text.split())
-    
-    # Store results back in session state to display in the UI
-    st.session_state.words = word_count
+# 1. Initialize the value in session state so it doesn't get re-initialized on every click
+if 'my_value' not in st.session_state:
+    st.session_state.my_value = "Default Value"
 
-# 2. Initialize session state variables if they do not exist
-if "words" not in st.session_state:
-    st.session_state.words = 0
+# 2. Define a callback function to update the session state
+def update_value():
+    st.session_state.my_value = st.session_state.widget_key
 
-st.title("Streamlit Text Area Callback Example")
-
-# 3. Create the text area with the on_change argument
-text_input = st.text_area(
-    label="Enter your text below:",
-    placeholder="Type something here...",
-    key="my_text_area",
-    on_change=handle_text_change
+# 3. Widget with matching key and callback
+st.text_input(
+    "Enter text:", 
+    value=st.session_state.my_value, 
+    key="widget_key", 
+    on_change=update_value
 )
 
-# 4. Display the results updated by the callback
-st.write(f"**Word Count (updated on change):** {st.session_state.words}")
-st.write(f"**Current Text length:** {len(text_input)} characters")
+st.write(f"Persisted value: {st.session_state.my_value}")
+
 
 
 
