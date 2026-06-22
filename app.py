@@ -81,7 +81,7 @@ if submit_btn.button("Submit"):
     handle_text_change()
 
 # TESTING: displays correct answer for the limit
-st.write(f"The limit is: {st.session_state.result}")
+#st.write(f"The limit is: {st.session_state.result}")
 
 # display answer correctness
 if st.session_state.answer is None:
@@ -95,6 +95,8 @@ else:
 ###############################################
 
 ###########################
+# TODO: Only show solution after the answer has been submitted!
+
 # solving for the solution of the limit
 exp_container = st.container(border=True, horizontal_alignment="left")
 exp_container.markdown("### Solution: ")
