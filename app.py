@@ -67,14 +67,14 @@ main_container.markdown("## Solve the limit:", text_alignment="center")
 main_container.latex(lim_disp, width="content")
 
 # create 2 columns (centered on the screen) for "your answer:" and input box
-left, right = main_container.columns(2, vertical_alignment="bottom")
+left, right = main_container.columns(2, vertical_alignment="center")
 left.markdown("### Your answer: ", text_alignment="right")
 
 # create 2 columns within the right column above to contain the input field and the submit button
 answer_box, submit_btn = right.columns([8,4]) 
 number = answer_box.text_input(
     label="", label_visibility='collapsed',
-    value=None, placeholder="Ex: 3.4", width=220, max_chars=15, 
+    value=None, placeholder="Ex: 3.4", width=220, max_chars=25, 
     key="answer_area", on_change=handle_text_change)
 
 if submit_btn.button("Submit"):
@@ -89,14 +89,15 @@ if submit_btn.button("Submit"):
 
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
-st.write(f"Your Answer: {st.session_state.curr_answer}")
 
 # display answer correctness
 if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
+    st.write(f"Your Answer: {st.session_state.curr_answer}")
     st.markdown(f":green[:material/check: Correct]. The limit is {st.session_state.result}.")
 else:
+    st.write(f"Your Answer: {st.session_state.curr_answer}")
     st.markdown(f":red[:material/close: Incorrect]. The limit is {st.session_state.result}.")
 ###############################################
 
