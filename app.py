@@ -37,7 +37,7 @@ def handle_text_change():
     
     # Store results back in session state to display in the UI
     st.session_state.answer = answer
-    st.session_state.curr_answer = curr_answer
+    st.session_state.curr_answer = current_answer
 #############################################
 # Create display for question prompt
 
