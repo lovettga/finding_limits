@@ -66,8 +66,10 @@ main_container.latex(lim_disp, width="content")
 left, right = main_container.columns(2, vertical_alignment="bottom")
 left.markdown("### Your answer: ", text_alignment="right")
 number = right.text_input(
-    label="", value=None, placeholder="Ex: 3.4", width=300, 
-    max_chars=10, key="answer_area", on_change=handle_text_change)
+    label="", value=None, placeholder="Ex: 3.4", width=250, 
+    max_chars=15, key="answer_area", on_change=handle_text_change)
+if left.button("Submit"):
+    handle_text_change()
 
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
