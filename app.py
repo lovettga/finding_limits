@@ -37,10 +37,7 @@ def handle_text_change():
     
     # Store results back in session state to display in the UI
     st.session_state.answer = answer
-
-# initialize session state variables if they do not exist
-if "answer" not in st.session_state:
-    st.session_state.answer = None
+    st.session_state.curr_answer = curr_answer
 #############################################
 # Create display for question prompt
 
@@ -51,6 +48,7 @@ if 'result' not in st.session_state:
     st.session_state.b = limit_info[1]
     st.session_state.c = limit_info[2]
     st.session_state.result = limit_info[3]
+    st.session_state.answer = None
 
 # page header
 st.header('Finding Limits')
@@ -72,6 +70,7 @@ number = right.text_input(
 
 # TESTING: displays correct answer for the limit
 st.write(f"The limit is: {st.session_state.result}")
+st.write(f"Your Answer: {st.session_state.curr_answer}")
 
 # display answer correctness
 if st.session_state.answer is None:
