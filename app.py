@@ -5,27 +5,31 @@ from sympy import nsimplify, symbols, limit, sqrt
 
 #############################################
 # Generate the limit problem and calculate solution
-# randomize c and b based on a
-a = np.random.randint(low=1, high=20)
+def generate_limit():
+    # randomize c and b based on a
+    a = np.random.randint(low=1, high=20)
+    
+    # utilized AI Generated code to generate a limit problem
+    # such that: (x+1) / (x^2+cx+b) = 0 at x=-1
+    # limit must simplify to 1/a
+    # c and b were derived and generated as follows:
+    c = a**2 + 2
+    b = a**2 + 1
+    
+    # this works to solve the limit using the generated c and b values
+    x = symbols('x')
+    expr = sqrt(  (x+1) / ( (x)**2 + c*x + b ) )
+    result = limit(expr, x, -1)
 
-# utilized AI Generated code to generate a limit problem
-# such that: (x+1) / (x^2+cx+b) = 0 at x=-1
-# limit must simplify to 1/a
-# c and b were derived and generated as follows:
-c = a**2 + 2
-b = a**2 + 1
-
-# this works to solve the limit using the generated c and b values
-x = symbols('x')
-expr = sqrt(  (x+1) / ( (x)**2 + c*x + b ) )
-result = limit(expr, x, -1)
+    return a, b, c, result
 
 # store values in session state
-if st.session_state.result = None
-    st.session_state.a = a
-    st.session_state.c = c
-    st.session_state.b = b
-    st.session_state.result = a
+if st.session_state.result = None:
+    limit_info = generate_limit()
+    st.session_state.a = limit_info[0]
+    st.session_state.b = limit_info[1]
+    st.session_state.c = limit_info[2]
+    st.session_state.result = limit_info[3]
 #############################################
 # Handle the callback for the answer box
 def handle_text_change():
