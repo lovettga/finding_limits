@@ -77,9 +77,9 @@ st.write(f"The limit is: {st.session_state.result}")
 if st.session_state.answer is None:
     st.markdown("")
 elif st.session_state.answer:
-    st.markdown("{{st.session_state.answer}} is :green[correct ].")
+    st.markdown(f":green[:material/check: Correct]. The limit is {st.session_state.answer}.")
 else:
-    st.markdown("{{st.session_state.answer}} is :red[incorrect ].")
+    st.markdown(f":red[:material/close: Incorrect]. The limit is {st.session_state.answer}.")
 ###############################################
 
 ###########################
