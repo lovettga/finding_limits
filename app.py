@@ -49,6 +49,7 @@ if 'result' not in st.session_state:
     st.session_state.c = limit_info[2]
     st.session_state.result = limit_info[3]
     st.session_state.answer = None
+    st.session_state.curr_answer = None
 
 # page header
 st.header('Finding Limits')
