@@ -75,7 +75,7 @@ lim_disp = r'\lim\limits_{x \to -1} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.se
 # create main container to hold the question prompt
 main_container = st.container(border=True, horizontal_alignment="center")
 main_container.markdown("## Solve the limit:", text_alignment="center")
-main_container.markdown(f"${lim_disp}$")
+main_container.markdown(f"${lim_disp}$", text_alignment="center")
 
 # create secondary container to hold "your answer: [answer input] [submit]"
 left, right = main_container.columns(2, vertical_alignment="center")
