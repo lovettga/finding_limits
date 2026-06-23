@@ -93,7 +93,9 @@ else:
     st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
     st.markdown(f":red[:material/close: Incorrect]. The limit is ${st.session_state.result}$.")
 ###############################################
-
+# Clicking this button naturally triggers a rerun
+if st.button("Try Another"):
+    st.rerun()
 ###########################
 # Solution optional - button
 def toggle_content():
