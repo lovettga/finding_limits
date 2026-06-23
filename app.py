@@ -70,7 +70,7 @@ if 'result' not in st.session_state:
 st.header('Finding Limits')
 
 # create string to display limit using randomized variables in LaTeX
-lim_disp = r'\dfrac{\text{lim}}{x -> -1} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
+lim_disp = r'\lim\limits_{x \to -1} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
 
 # create main container to hold the question prompt
 main_container = st.container(border=True, horizontal_alignment="center")
