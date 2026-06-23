@@ -75,7 +75,7 @@ lim_disp = r'\lim_{x \to {-1}} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session
 # create main container to hold the question prompt
 main_container = st.container(border=True, horizontal_alignment="center")
 main_container.markdown("## Solve the limit:", text_alignment="center")
-main_container.latex(lim_disp, width="content")
+main_container.latex(lim_disp)
 
 # create secondary container to hold "your answer: [answer input] [submit]"
 left, right = main_container.columns(2, vertical_alignment="center")
@@ -124,11 +124,11 @@ st.button(button_label, on_click=toggle_content)
 # display solution if toggled to show
 if st.session_state.show_content:
     # solving for the solution of the limit
-    exp_container = st.container(border=True, horizontal_alignment="center")
+    exp_container = st.container(border=True, horizontal_alignment="left")
     exp_container.markdown("### Solution: ")
 
     exp_container.markdown(f"Given: ")
-    exp_container.latex(lim_disp, width="content")
+    exp_container.latex(lim_disp)
 
     exp_container.markdown(f"Simplify the function within the square root of the limit.")
     fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
