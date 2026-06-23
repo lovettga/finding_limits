@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sympy import nsimplify, symbols, limit, sqrt
+from streamlit_js_eval import streamlit_js_eval
 
 #############################################
 # Generate the limit problem and calculate solution
@@ -95,7 +96,7 @@ else:
 ###############################################
 # Clicking this button naturally triggers a rerun
 if st.button("Try Another"):
-    st.rerun()
+    streamlit_js_eval(js_expressions="parent.window.location.reload()")
 ###########################
 # Solution optional - button
 def toggle_content():
