@@ -104,7 +104,7 @@ def clear_session_state():
         del st.session_state[key]
     
     # Force the app to rerun with an empty state
-    st.rerun()
+    #st.rerun()
 
 # Link the function to a reset button
 st.button("Reset Application", on_click=clear_session_state)
