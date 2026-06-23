@@ -2,17 +2,16 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sympy import nsimplify, symbols, limit, sqrt
-from streamlit_js_eval import streamlit_js_eval
 
 #############################################
-# Generate the limit problem and calculate solution
+### FUNCTIONS ###
+
+# Generate the radomized values for the limit problem and calculate the solution
 def generate_limit():
-    # randomize c and b based on a
+    # c and b are dependent on randomizing a
     a = np.random.randint(low=1, high=20)
     
     # utilized AI Generated code to generate a limit problem
-    # such that: (x+1) / (x^2+cx+b) = 0 at x=-1
-    # limit must simplify to 1/a
     # c and b were derived and generated as follows:
     c = a**2 + 2
     b = a**2 + 1
@@ -23,7 +22,7 @@ def generate_limit():
     result = limit(expr, x, -1)
 
     return a, b, c, result
-#############################################
+
 # Handle the callback for the answer box
 def handle_text_change():
     # Access the text using the widget's unique key
@@ -40,11 +39,22 @@ def handle_text_change():
     if current_answer == st.session_state.result:
         answer = True
     
-    # Store results back in session state to display in the UI
+    # store results back in session state to display in the UI
     st.session_state.answer = answer
     st.session_state.curr_answer = current_answer
+
+# Clear all session_state keys for application reset
+def clear_session_state():
+    # Delete all items from the Session State dictionary
+    for key in list(st.session_state.keys()):
+        del st.session_state[key]
+
+# toggles value used to show/hide content (use case is for solution display)
+def toggle_content():
+    st.session_state.show_content = not st.session_state.show_content
+
 #############################################
-# Create display for question prompt
+### QUESTION PROMPT ###
 
 # initialize values and store values in session state
 if 'result' not in st.session_state:
@@ -62,16 +72,16 @@ st.header('Finding Limits')
 # create string to display limit using randomized variables in LaTeX
 lim_disp = r'\lim_{x \to {-1}} \sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
 
-# create main container for the question prompt and answer box
+# create main container to hold the question prompt
 main_container = st.container(border=True, horizontal_alignment="center")
 main_container.markdown("## Solve the limit:", text_alignment="center")
 main_container.latex(lim_disp, width="content")
 
-# create 2 columns (centered on the screen) for "your answer:" and input box
+# create secondary container to hold "your answer: [answer input] [submit]"
 left, right = main_container.columns(2, vertical_alignment="center")
 left.markdown("### Your answer: ", text_alignment="right")
 
-# create 2 columns within the right column above to contain the input field and the submit button
+# create tertiary container to hold "[answer input] [submit]"
 answer_box, submit_btn = right.columns([8,4]) 
 number = answer_box.text_input(
     label="", label_visibility='collapsed',
@@ -81,8 +91,8 @@ number = answer_box.text_input(
 if submit_btn.button("Submit"):
     handle_text_change()
 
-# TESTING: displays correct answer for the limit
-#st.write(f"The limit is: {st.session_state.result}")
+#############################################
+### RESPONSE AND TRY AGAIN ###
 
 # display answer correctness
 if st.session_state.answer is None:
@@ -93,21 +103,12 @@ elif st.session_state.answer:
 else:
     st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
     st.markdown(f":red[:material/close: Incorrect]. The limit is ${st.session_state.result}$.")
-###############################################
-# function called to clear all session_state keys for application reset
-def clear_session_state():
-    # Delete all items from the Session State dictionary
-    for key in list(st.session_state.keys()):
-        del st.session_state[key]
 
 # button to generate a new limit
 st.button("Try Another", on_click=clear_session_state)
-###########################
-# Solution optional - button
 
-# function to show/hide content (use case is for solution display)
-def toggle_content():
-    st.session_state.show_content = not st.session_state.show_content
+#############################################
+### OPTIONAL SOLUTION ###
 
 # initialize in session_state
 if "show_content" not in st.session_state:
@@ -125,26 +126,15 @@ if st.session_state.show_content:
     # solving for the solution of the limit
     exp_container = st.container(border=True, horizontal_alignment="left")
     exp_container.markdown("### Solution: ")
-    # Given:
+
     exp_container.markdown(f"Given: ")
     exp_container.latex(lim_disp, width="content")
-    # simplify the function of the limit
+
     exp_container.markdown(f"Simplify the function of the limit.")
     fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
     sim_fx_disp = r'\sqrt{ \dfrac{1}{x+%s} }' % (st.session_state.b)
     exp_container.markdown(f"${fx_disp}$ -> ${sim_fx_disp}$")
-    
-    # Evaluate:
+
     exp_container.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
     sim_fx_disp = r'\sqrt{ \dfrac{1}{-1+%s} }' % (st.session_state.b)
     exp_container.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
-###########################
-
-
-
-
-
-
-
-
-
