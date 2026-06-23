@@ -1,3 +1,2 @@
 streamlit
 sympy
-streamlit_js_eval
