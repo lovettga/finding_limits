@@ -94,22 +94,18 @@ else:
     st.markdown(f"Your Answer: ${st.session_state.curr_answer}$")
     st.markdown(f":red[:material/close: Incorrect]. The limit is ${st.session_state.result}$.")
 ###############################################
-# Clicking this button naturally triggers a rerun of the entire page (hard refresh)
-if st.button("Try Another"):
-    streamlit_js_eval(js_expressions="parent.window.location.reload()")
-
+# function called to clear all session_state keys for application reset
 def clear_session_state():
     # Delete all items from the Session State dictionary
     for key in list(st.session_state.keys()):
         del st.session_state[key]
-    
-    # Force the app to rerun with an empty state
-    #st.rerun()
 
-# Link the function to a reset button
-st.button("Reset Application", on_click=clear_session_state)
+# button to generate a new limit
+st.button("Try Another", on_click=clear_session_state)
 ###########################
 # Solution optional - button
+
+# function to show/hide content (use case is for solution display)
 def toggle_content():
     st.session_state.show_content = not st.session_state.show_content
 
