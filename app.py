@@ -95,41 +95,39 @@ else:
 ###############################################
 
 ###########################
-# TODO: Only show solution after the answer has been submitted!
-
-if "show_content" not in st.session_state:
-    st.session_state.show_content = False
-
+# Solution optional - button
 def toggle_content():
     st.session_state.show_content = not st.session_state.show_content
 
-
+# initialize in session_state
+if "show_content" not in st.session_state:
+    st.session_state.show_content = False
+# determine if solution should be shown
 if st.session_state.show_content: 
-    button_label = "Hide" 
+    button_label = "Hide Solution" 
 else:
-    button_label = "Show"
-    
+    button_label = "Show Solution"
+
 st.button(button_label, on_click=toggle_content)
 
+# display solution if toggled to show
 if st.session_state.show_content:
-    st.write("Content revealed!")
-
-# solving for the solution of the limit
-exp_container = st.container(border=True, horizontal_alignment="left")
-exp_container.markdown("### Solution: ")
-# Given:
-exp_container.markdown(f"Given: ")
-exp_container.latex(lim_disp, width="content")
-# simplify the function of the limit
-exp_container.markdown(f"Simplify the function of the limit.")
-fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
-sim_fx_disp = r'\sqrt{ \dfrac{1}{x+%s} }' % (st.session_state.b)
-exp_container.markdown(f"${fx_disp}$ -> ${sim_fx_disp}$")
-
-# Evaluate:
-exp_container.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
-sim_fx_disp = r'\sqrt{ \dfrac{1}{-1+%s} }' % (st.session_state.b)
-exp_container.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
+    # solving for the solution of the limit
+    exp_container = st.container(border=True, horizontal_alignment="left")
+    exp_container.markdown("### Solution: ")
+    # Given:
+    exp_container.markdown(f"Given: ")
+    exp_container.latex(lim_disp, width="content")
+    # simplify the function of the limit
+    exp_container.markdown(f"Simplify the function of the limit.")
+    fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
+    sim_fx_disp = r'\sqrt{ \dfrac{1}{x+%s} }' % (st.session_state.b)
+    exp_container.markdown(f"${fx_disp}$ -> ${sim_fx_disp}$")
+    
+    # Evaluate:
+    exp_container.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
+    sim_fx_disp = r'\sqrt{ \dfrac{1}{-1+%s} }' % (st.session_state.b)
+    exp_container.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
 ###########################
 
 
