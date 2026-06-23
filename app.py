@@ -124,17 +124,17 @@ st.button(button_label, on_click=toggle_content)
 # display solution if toggled to show
 if st.session_state.show_content:
     # solving for the solution of the limit
-    exp_container = st.container(border=True, horizontal_alignment="left")
+    exp_container = st.container(border=True, horizontal_alignment="center")
     exp_container.markdown("### Solution: ")
 
     exp_container.markdown(f"Given: ")
     exp_container.latex(lim_disp, width="content")
 
-    exp_container.markdown(f"Simplify the function of the limit.")
+    exp_container.markdown(f"Simplify the function within the square root of the limit.")
     fx_disp = r'\sqrt{ \dfrac{x+1}{x^{2}+%sx+%s} }' % (st.session_state.c, st.session_state.b)
     sim_fx_disp = r'\sqrt{ \dfrac{1}{x+%s} }' % (st.session_state.b)
     exp_container.markdown(f"${fx_disp}$ -> ${sim_fx_disp}$")
 
-    exp_container.markdown(f"Evaluate the simplified function as $x$ heads to $-1$.")
+    exp_container.markdown(f"Evaluate the simplified function where $x$ is equal to $-1$.")
     sim_fx_disp = r'\sqrt{ \dfrac{1}{-1+%s} }' % (st.session_state.b)
     exp_container.markdown(f"${sim_fx_disp} = {st.session_state.result}$")
