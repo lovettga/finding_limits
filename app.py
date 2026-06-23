@@ -97,6 +97,23 @@ else:
 ###########################
 # TODO: Only show solution after the answer has been submitted!
 
+if "show_content" not in st.session_state:
+    st.session_state.show_content = False
+
+def toggle_content():
+    st.session_state.show_content = not st.session_state.show_content
+
+
+if st.session_state.show_content: 
+    button_label = "Hide" 
+else:
+    button_label = "Show"
+    
+st.button(button_label, on_click=toggle_content)
+
+if st.session_state.show_content:
+    st.write("Content revealed!")
+
 # solving for the solution of the limit
 exp_container = st.container(border=True, horizontal_alignment="left")
 exp_container.markdown("### Solution: ")
